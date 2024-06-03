@@ -1,0 +1,47 @@
+import homenajes.*
+	test "Se espera vender 49.000 entradas en el homenaje a Messi" {
+		messi.asignarCapacidadDelEstadio(50000)
+		assert.equals(49000,messi.entradasAVender())
+	}
+	
+	test "AFA recauda 475 millones en el homenaje a Messi"{
+		//const hayInflacion= false
+		messi.valorDeEntradasPorInflacion()
+		messi.asignarCapacidadDelEstadio(50000)
+		messi.asignarCostoDelAlquiler(5000000)
+		messi.asignarViaticos(10000000)
+		assert.equals(475000000, messi.gananciaNeta())
+	}
+	
+	test "La popularidad de messi cae tras hablar del presidente de AFA"{
+		messi.opinarDelPresidenteDeAFA()
+		assert.equals(0.93, messi.popularidad())
+	}
+	
+	test "Le hacen un homenaje a messi luego de haber opinado del presidente de AFA y gana 450 millones"{
+		//const hayInflacion= false
+		messi.valorDeEntradasPorInflacion()
+		messi.opinarDelPresidenteDeAFA()
+		messi.asignarCapacidadDelEstadio(50000)
+		messi.asignarCostoDelAlquiler(5000000)
+		messi.asignarViaticos(10000000)
+		assert.equals(450000000, messi.gananciaNeta())
+	}
+	
+	test "Hay inflacion y las entradas cuestan el 20000 en vez de 10000"{
+		messi.cambiarInflacion()
+		messi.valorDeEntradasPorInflacion()
+		assert.equals(20000, messi.precioEntrada())
+	}
+	
+	/**test "Mbappe anota 3 goles a sus 23 años en la final del mundo llegando a 49 de popularidad"{
+		mbappe.asignarEdad(23)
+		mbappe.darGolesEnFinalesDelMundo(3)
+		assert.equals(0.49,mbappe.popularidad())
+	}
+	
+	test "Ronaldo pierde popularidad por ir a jugar a la Antartida perdiendo popularidad, Messi tiene 98 de popularidad,
+			por lo tanto Ronaldo queda con 41"{
+		ronaldo.irALaAntartida()
+		assert.equals(0.41, ronaldo.popularidad())
+	}*/
